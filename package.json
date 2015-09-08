@@ -9,8 +9,12 @@
     },
     "dependencies": {
         "express": "4.13.*",
-        "lodash": "^3.10.1",
-        "socket.io": "^1.3.6"
+        "lodash": "latest",
+        "socket.io": "1.3.*",
+        "node-uuid": "latest",
+        "angular": "1.4.*",
+        "bootstrap": "3.3.*",
+        "jquery": "latest"
     },
     "engines": {
         "node": "0.12.x"
