@@ -40,7 +40,6 @@
                 for (; i > 0; i--) {
                     result.push(me.messages[last - i]);
                 }
-                console.log(me.messages, result);
 
                 return result;
             }
@@ -50,7 +49,7 @@
             lastMessages: {
                 enumerate: true,
                 get: function () {
-                    return me.getMessages(me.messages.length - 1, 50);
+                    return me.getMessages(me.messages.length, 50);
                 }
             }
         });

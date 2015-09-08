@@ -22,5 +22,9 @@
             callback();
             io.sockets.emit('message', chat.messages[index]);
         });
+
+        socket.on('moreMessages', function (args, callback) {
+            callback(chat.getMessages(args.last.id, args.count));
+        });
     });
 })();

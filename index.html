@@ -27,6 +27,7 @@
     </head>
     <body>
         <main class="container-fluid" ng-controller="AppController" ng-cloak>
+            <button class="btn btn-link" ng-show="hasMore" ng-click="getMoreMessages()">Load More Messages</button>
             <div class="media" ng-repeat="message in messages">
                 <div class="media-body">
                     <h4 class="media-heading">{{message.sender.name}}</h4>

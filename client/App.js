@@ -1,1 +1,2 @@
-window.App = angular.module('App', []);
+window.App = angular.module('App', [])
+    .constant('PageCount', 50);
