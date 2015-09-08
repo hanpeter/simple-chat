@@ -12,6 +12,9 @@ App.controller('AppController', ['$scope', '$window', '$timeout', 'SocketService
             }, function () {
                 $scope.text = '';
             });
+        },
+        setName: function (name) {
+            SocketService.emit('register', name, function (user) { $scope.user = user; });
         }
     });
 
@@ -26,13 +29,5 @@ App.controller('AppController', ['$scope', '$window', '$timeout', 'SocketService
         $timeout(function () {
             $window.scrollTo(0, $window.document.body.scrollHeight);
         });
-    });
-
-    $('#nameModal').modal();
-    $('#nameModal').on('shown.bs.modal', function () {
-        $('#nameInput').focus();
-    });
-    $('#nameModal').on('hidden.bs.modal', function () {
-        SocketService.emit('register', $scope.user.name, function (user) { $scope.user = user; });
     });
 }]);

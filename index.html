@@ -43,7 +43,7 @@
                 </div>
             </form>
 
-            <div class="modal fade" id="nameModal">
+            <div class="modal fade" id="nameModal" ng-controller="NameModalController">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -51,7 +51,7 @@
                         </div>
                         <div class="modal-body">
                             <form>
-                                <input type="text" class="form-control" ng-model="user.name" id="nameInput" />
+                                <input type="text" class="form-control" ng-model="name" id="nameInput" />
                             </form>
                         </div>
                         <div class="modal-footer">
@@ -79,5 +79,6 @@
 
         <!-- Controllers -->
         <script src="/client/controllers/AppController.js"></script>
+        <script src="/client/controllers/NameModalController.js"></script>
     </body>
 </html>
