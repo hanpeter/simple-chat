@@ -2,26 +2,46 @@
     <head>
         <title>Simple Chat Client</title>
         <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <style>
+            main.container-fluid {
+                margin-bottom: 70px;
+            }
+            .message-form {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background-color: #333333;
+                padding: 10px 0;
+                margin: 0;
+            }
+            .message-form .username {
+                color: #FFFFFF;
+                line-height: 30px;
+                font-size: 18px;
+            }
+            .message-form .send-button {
+                width: 100%;
+            }
+        </style>
     </head>
-    <body class="container-fluid">
-        <main ng-controller="AppController">
+    <body>
+        <main class="container-fluid" ng-controller="AppController" ng-cloak>
             <div class="media" ng-repeat="message in messages">
                 <div class="media-body">
                     <h4 class="media-heading">{{message.sender.name}}</h4>
                     {{message.message}}
                 </div>
             </div>
-            <nav class="navbar navbar-default navbar-fixed-bottom">
-                <div class="container-fluid">
-                    <span class="navbar-brand">{{user.name}}</span>
-                    <form class="navbar-form navbar-left" ng-submit="send()">
-                        <div class="form-group">
-                            <input type="text" class="form-control" ng-model="text" />
-                            <button type="submit" class="btn btn-default">Send</button>
-                        </div>
-                    </form>
+            <form class="form-horizontal message-form" ng-submit="send()">
+                <label for="message" class="col-xs-1 username">{{user.name}}</label>
+                <div class="col-xs-10">
+                    <input type="text" id="message" class="form-control" ng-model="text" />
                 </div>
-            </nav>
+                <div class="col-xs-1">
+                    <button type="submit" class="btn btn-primary send-button">Send</button>
+                </div>
+            </form>
         </main>
 
         <!-- Scripts -->
