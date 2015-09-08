@@ -13,12 +13,13 @@
     io.sockets.on('connection', function (socket) {
         socket.emit('startMessages', chat.lastMessages);
 
-        socket.on('register', function (name) {
-            socket.emit('registered', chat.addUser(name));
+        socket.on('register', function (name, callback) {
+            callback(chat.addUser(name));
         });
 
-        socket.on('message', function (message) {
+        socket.on('message', function (message, callback) {
             var index = chat.addMessage(message.senderID, message.message);
+            callback();
             io.sockets.emit('message', chat.messages[index]);
         });
     });

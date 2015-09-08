@@ -1,4 +1,4 @@
-App.controller('AppController', ['$scope', 'SocketService', function ($scope, SocketService) {
+App.controller('AppController', ['$scope', '$window', '$timeout', 'SocketService', function ($scope, $window, $timeout, SocketService) {
     _.extend($scope, {
         messages: [],
         user: {
@@ -17,12 +17,15 @@ App.controller('AppController', ['$scope', 'SocketService', function ($scope, So
 
     SocketService.on('startMessages', function (messages) {
         $scope.messages = messages;
-        console.log($scope.messages);
+        $timeout(function () {
+            $window.scrollTo(0, $window.document.body.scrollHeight);
+        });
     });
     SocketService.on('message', function (message) {
         $scope.messages.push(message);
-        console.log($scope.messages);
+        $timeout(function () {
+            $window.scrollTo(0, $window.document.body.scrollHeight);
+        });
     });
-    SocketService.emit('register', $scope.user.name);
-    SocketService.on('registered', function (user) { $scope.user = user; });
+    SocketService.emit('register', $scope.user.name, function (user) { $scope.user = user; });
 }]);
