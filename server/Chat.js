@@ -2,6 +2,15 @@
     var _ = require('lodash');
     var uuid = require('node-uuid');
 
+    function getRandomColor() {
+        var letters = '0123456789ABCDEF'.split('');
+        var color = '#';
+        for (var i = 0; i < 6; i++ ) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
     function chat() {
         var me = {
             messages: [],
@@ -10,7 +19,7 @@
                 var user = {
                     id: uuid.v4(),
                     name: name,
-                    color: '#000000' // TODO: Randomize
+                    color: getRandomColor()
                 };
 
                 me.users[user.id] = user;

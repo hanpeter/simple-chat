@@ -3,7 +3,8 @@ App.controller('AppController', ['$scope', '$window', '$timeout', 'SocketService
         messages: [],
         hasMore: false,
         user: {
-            name: 'Peter'
+            name: '',
+            color: '#000000'
         },
         text: '',
         send: function () {
@@ -31,12 +32,24 @@ App.controller('AppController', ['$scope', '$window', '$timeout', 'SocketService
     SocketService.on('startMessages', function (messages) {
         $scope.messages = messages;
         $scope.hasMore = (messages.length >= PageCount);
+
+        _.forEach($scope.messages, function (msg) {
+            msg.style = {
+                color: msg.sender.color
+            };
+        });
+
         $timeout(function () {
             $window.scrollTo(0, $window.document.body.scrollHeight);
         });
     });
-    SocketService.on('message', function (message) {
-        $scope.messages.push(message);
+    SocketService.on('message', function (msg) {
+        $scope.messages.push(msg);
+
+        msg.style = {
+            color: msg.sender.color
+        };
+
         $timeout(function () {
             $window.scrollTo(0, $window.document.body.scrollHeight);
         });
