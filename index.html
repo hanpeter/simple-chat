@@ -42,6 +42,24 @@
                     <button type="submit" class="btn btn-primary send-button">Send</button>
                 </div>
             </form>
+
+            <div class="modal fade" id="nameModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">What's your name?</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <input type="text" class="form-control" ng-model="user.name" id="nameInput" />
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
 
         <!-- Scripts -->

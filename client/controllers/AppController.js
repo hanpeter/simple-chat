@@ -27,5 +27,12 @@ App.controller('AppController', ['$scope', '$window', '$timeout', 'SocketService
             $window.scrollTo(0, $window.document.body.scrollHeight);
         });
     });
-    SocketService.emit('register', $scope.user.name, function (user) { $scope.user = user; });
+
+    $('#nameModal').modal();
+    $('#nameModal').on('shown.bs.modal', function () {
+        $('#nameInput').focus();
+    });
+    $('#nameModal').on('hidden.bs.modal', function () {
+        SocketService.emit('register', $scope.user.name, function (user) { $scope.user = user; });
+    });
 }]);
